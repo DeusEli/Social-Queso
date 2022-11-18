@@ -7,6 +7,7 @@ import {
   RegisterScreen,
   OnboardingScreen,
 } from "../src/screens";
+import { Pink50, Pink300 } from "../src/utils/Colors";
 
 const AppStack = createStackNavigator();
 
@@ -44,13 +45,15 @@ const AuthStack = () => {
       <AppStack.Screen
         name="Register"
         component={RegisterScreen}
-        options={{ headerShown: false }}
+        options={({ navigation }) => ({
+          title: "",
+          headerStyle: {
+            elevation: 0,
+            backgroundColor: Pink50,
+          },
+        })}
       />
-      <AppStack.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{ headerShown: false }}
-      />
+      <AppStack.Screen name="Home" component={HomeScreen} />
     </AppStack.Navigator>
   );
 };

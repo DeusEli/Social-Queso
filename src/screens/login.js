@@ -1,14 +1,6 @@
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import {
-  Pressable,
-  SafeAreaView,
-  Text,
-  TextInput,
-  View,
-  Image,
-  TouchableOpacity,
-} from "react-native";
+import { Text, View, Image, TouchableOpacity } from "react-native";
 import FormButton from "../components/formButton";
 import FormInput from "../components/formInput";
 import SocialButton from "../components/socialButton";
@@ -18,7 +10,7 @@ const Login = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   return (
-    <View className="flex items-center pt-28">
+    <View className="items-center pt-28 bg-pink-50 h-full">
       <Image
         source={require("../../assets/cheese01.png")}
         className="w-32 h-32"
@@ -30,7 +22,7 @@ const Login = () => {
         labelValue={email}
         onChangeText={(userEmail) => setEmail(userEmail)}
         placeholderText="Email"
-        iconType="user"
+        iconType="mail"
         keyboardType="email-address"
         autoCapitalize="none"
         autoCorrect={false}
