@@ -1,12 +1,9 @@
-import { StatusBar } from "expo-status-bar";
-import { useState } from "react";
-import { Text, View } from "react-native";
-import Login from "./src/screens/login";
-import Home from "./src/screens/home";
-import supabase from "./supabase-service";
+import { useEffect, useState } from "react";
+import { Dimensions } from "react-native";
+import { Feather } from "@expo/vector-icons";
+import Providers from "./navigation";
 
 export default function App() {
   const [auth, setAuth] = useState(false);
-
-  return <Login />;
+  return <Providers />;
 }
