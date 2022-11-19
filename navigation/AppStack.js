@@ -1,21 +1,118 @@
 import React from "react";
+import { View, Icon } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { createDrawerNavigator } from "@react-navigation/drawer";
-import { HomeScreen, ProfileScreen } from "../src/screens";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { useNavigation } from "@react-navigation/native";
+import { HomeScreen, ProfileScreen, AddPostScreen } from "../src/screens";
+import { Pink400, Pink50 } from "../src/utils/Colors";
+import { FontAwesome } from "@expo/vector-icons";
 
 const Stack = createStackNavigator();
-const Drawer = createDrawerNavigator();
+const Tab = createBottomTabNavigator();
+
+const FeedStack = () => {
+  const navigation = useNavigation();
+
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Social Queso"
+        component={HomeScreen}
+        options={{
+          headerTitleAlign: "center",
+          headerTitleStyle: {
+            fontWeight: "bold",
+            color: Pink400,
+            fontSize: 20,
+          },
+          headerStyle: {
+            backgroundColor: Pink50,
+            elevation: 0,
+          },
+          headerRight: () => (
+            <View style={{ marginRight: 10 }}>
+              <FontAwesome.Button
+                name="plus"
+                size={18}
+                backgroundColor={Pink50}
+                color={Pink400}
+                onPress={() => navigation.navigate("Add a Post")}
+              />
+            </View>
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="Add a Post"
+        component={AddPostScreen}
+        options={{
+          headerTitleAlign: "center",
+          headerTitleStyle: {
+            fontWeight: "bold",
+            color: Pink400,
+            fontSize: 20,
+          },
+          headerStyle: {
+            backgroundColor: Pink50,
+            elevation: 0,
+          },
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
 
 const AppStack = () => {
   return (
-    // <Stack.Navigator initialRouteName="Home">
-    //   <Stack.Screen name="Home" component={HomeScreen} />
-    //   <Stack.Screen name="Profile" component={ProfileScreen} />
-    // </Stack.Navigator>
-    <Drawer.Navigator initialRouteName="Home">
-      <Drawer.Screen name="Home" component={HomeScreen} />
-      <Drawer.Screen name="Profile" component={ProfileScreen} />
-    </Drawer.Navigator>
+    <Tab.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        tabBarActiveTintColor: Pink400,
+      }}
+    >
+      <Tab.Screen
+        name="Home"
+        component={FeedStack}
+        options={{
+          headerShown: false,
+          tabBarLabel: "Home",
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome name="home" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{
+          headerTitleAlign: "center",
+          headerTitleStyle: {
+            fontWeight: "bold",
+            color: Pink400,
+            fontSize: 20,
+          },
+          headerStyle: {
+            backgroundColor: Pink50,
+            elevation: 0,
+          },
+          tabBarLabel: "Profile",
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome name="user" color={color} size={size} />
+          ),
+          // headerRight: () => (
+          //   <View style={{ marginRight: 10 }}>
+          //     <FontAwesome.Button
+          //       name="plus"
+          //       size={18}
+          //       backgroundColor={Pink50}
+          //       color={Pink400}
+          //       onPress={() => alert("This is a button!")}
+          //     />
+          //   </View>
+          // ),
+        }}
+      />
+    </Tab.Navigator>
   );
 };
 

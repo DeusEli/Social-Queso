@@ -14,11 +14,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "445573027299-ev3skhrok885ffc898jkq3jlcgq4cehu.apps.googleusercontent.com",
+          "client_id": "445573027299-fb8e3t1t7nvqptvfnm1klcugtohp6k1a.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.socialqueso",
-            "certificate_hash": "045ff6a869a36f6e8c70802148d10ab6f5ffbb48"
+            "certificate_hash": "430c7bdac85dda826d823d2db73f041f2d61bac2"
           }
         },
         {

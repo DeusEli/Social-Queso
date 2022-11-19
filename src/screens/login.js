@@ -11,7 +11,7 @@ const Login = () => {
   const navigation = useNavigation();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const { login } = useContext(AuthContext);
+  const { login, googleLogin } = useContext(AuthContext);
 
   return (
     <View className="items-center pt-28 bg-pink-50 h-full">
@@ -59,6 +59,7 @@ const Login = () => {
             btnType="google"
             color="#DE4D41"
             bgColor="#f5e7ea"
+            onPress={() => googleLogin()}
           />
           <SocialButton
             buttonTitle="Sign In with Facebook"
