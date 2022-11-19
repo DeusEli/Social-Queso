@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Icon } from "react-native";
+import { View, Icon, Image } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useNavigation } from "@react-navigation/native";
@@ -29,6 +29,14 @@ const FeedStack = () => {
             backgroundColor: Pink50,
             elevation: 0,
           },
+          headerLeft: () => (
+            <View style={{ marginLeft: 20 }}>
+              <Image
+                source={require("../assets/cheese01.png")}
+                style={{ width: 32, height: 32 }}
+              />
+            </View>
+          ),
           headerRight: () => (
             <View style={{ marginRight: 10 }}>
               <FontAwesome.Button
