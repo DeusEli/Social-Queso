@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "445573027299",
+    "project_id": "social-queso",
+    "storage_bucket": "social-queso.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:445573027299:android:f6363218a358b6c7bcfcd6",
+        "android_client_info": {
+          "package_name": "com.socialqueso"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "445573027299-ev3skhrok885ffc898jkq3jlcgq4cehu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.socialqueso",
+            "certificate_hash": "045ff6a869a36f6e8c70802148d10ab6f5ffbb48"
+          }
+        },
+        {
+          "client_id": "445573027299-c207d1etka7r9npme2bbkpgbg6ete6c2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrMp_pPKlQI-hWgF5MqQVx1JYH5z92QJw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "445573027299-c207d1etka7r9npme2bbkpgbg6ete6c2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -8,6 +8,7 @@ import {
   OnboardingScreen,
 } from "../src/screens";
 import { Pink50, Pink300 } from "../src/utils/Colors";
+import { GoogleSignin } from "@react-native-community/google-signin";
 
 const AppStack = createStackNavigator();
 
@@ -23,6 +24,11 @@ const AuthStack = () => {
       } else {
         setIsFirstLaunch(false);
       }
+    });
+
+    GoogleSignin.configure({
+      webClientId:
+        "445573027299-c207d1etka7r9npme2bbkpgbg6ete6c2.apps.googleusercontent.com",
     });
   }, []);
 

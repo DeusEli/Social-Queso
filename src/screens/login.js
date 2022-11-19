@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../../navigation/AuthProvider";
 import { useNavigation } from "@react-navigation/native";
-import { Text, View, Image, TouchableOpacity } from "react-native";
+import { Text, View, Image, TouchableOpacity, Platform } from "react-native";
 import FormButton from "../components/formButton";
 import FormInput from "../components/formInput";
 import SocialButton from "../components/socialButton";
+import { Pink600, Amber300 } from "../utils/Colors";
 
 const Login = () => {
   const navigation = useNavigation();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const { login } = useContext(AuthContext);
+
   return (
     <View className="items-center pt-28 bg-pink-50 h-full">
       <Image
@@ -34,7 +38,12 @@ const Login = () => {
         iconType="lock1"
         secureTextEntry={true}
       />
-      <FormButton buttonTitle="Sign In" onPress={() => alert("Amo a Kathe")} />
+      <FormButton
+        buttonTitle="Sign In"
+        onPress={() => login(email, password)}
+        txtColor={Amber300}
+        bgColor={Pink600}
+      />
       <TouchableOpacity
         className="mt-4 mb-2"
         onPress={() => alert("Mi Kathe es la mejor novia")}
@@ -43,18 +52,22 @@ const Login = () => {
           Forgot your password?
         </Text>
       </TouchableOpacity>
-      <SocialButton
-        buttonTitle="Sign In with Google"
-        btnType="google"
-        color="#DE4D41"
-        bgColor="#f5e7ea"
-      />
-      <SocialButton
-        buttonTitle="Sign In with Facebook"
-        btnType="facebook"
-        color="#4867aa"
-        bgColor="#e6eaf4"
-      />
+      {Platform.OS === "android" ? (
+        <View>
+          <SocialButton
+            buttonTitle="Sign In with Google"
+            btnType="google"
+            color="#DE4D41"
+            bgColor="#f5e7ea"
+          />
+          <SocialButton
+            buttonTitle="Sign In with Facebook"
+            btnType="facebook"
+            color="#4867aa"
+            bgColor="#e6eaf4"
+          />
+        </View>
+      ) : null}
       <View className="flex-row mt-4">
         <Text className="text-sm text-amber-700">Don't have an account?</Text>
         <TouchableOpacity

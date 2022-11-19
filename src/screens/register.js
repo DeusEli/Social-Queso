@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Text, View, TouchableOpacity } from "react-native";
 import FormButton from "../components/formButton";
 import FormInput from "../components/formInput";
 import SocialButton from "../components/socialButton";
+import { AuthContext } from "../../navigation/AuthProvider";
+import { Pink600, Amber300 } from "../utils/Colors";
 
 const Register = () => {
   const navigation = useNavigation();
@@ -13,18 +15,16 @@ const Register = () => {
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
 
-  // const handleRegister = () => {
-  //   if (password !== confirmPassword) {
-  //     alert("Passwords do not match");
-  //     return;
-  //   } else {
-  //     supabase.auth.signUp({ email, password }).then(({ response }) => {
-  //       response.error
-  //         ? alert(response.error.message)
-  //         : navigation.navigate("Login");
-  //     });
-  //   }
-  // };
+  const validatePassword = () => {
+    if (password !== confirmPassword) {
+      alert("Passwords do not match");
+      return false;
+    } else {
+      signup(email, password);
+    }
+  };
+
+  const { signup } = useContext(AuthContext);
 
   return (
     <View className="items-center pt-18 bg-pink-50 h-full">
@@ -74,23 +74,28 @@ const Register = () => {
       />
       <FormButton
         buttonTitle="Sign Up"
-        onPress={() => {
-          //handleRegister;
-        }}
+        // onPress={() => signup(email, password)}
+        onPress={() => validatePassword()}
         className="mb-2"
+        txtColor={Amber300}
+        bgColor={Pink600}
       />
-      <SocialButton
-        buttonTitle="Sign Up with Google"
-        btnType="google"
-        color="#DE4D41"
-        bgColor="#f5e7ea"
-      />
-      <SocialButton
-        buttonTitle="Sign Up with Facebook"
-        btnType="facebook"
-        color="#4867aa"
-        bgColor="#e6eaf4"
-      />
+      {Platform.OS === "android" ? (
+        <View>
+          <SocialButton
+            buttonTitle="Sign Up with Google"
+            btnType="google"
+            color="#DE4D41"
+            bgColor="#f5e7ea"
+          />
+          <SocialButton
+            buttonTitle="Sign Up with Facebook"
+            btnType="facebook"
+            color="#4867aa"
+            bgColor="#e6eaf4"
+          />
+        </View>
+      ) : null}
       <View className="flex-row mt-4">
         <Text className="text-sm text-amber-700">Already have an account?</Text>
         <TouchableOpacity
