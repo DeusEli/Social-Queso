@@ -6,7 +6,7 @@ import { View, TouchableOpacity, Animated, StyleSheet } from "react-native";
 import { Pink500, Amber600 } from "../utils/Colors";
 
 //const FloatingButton = () => {
-const FloatingButton = ({ takePhotoFromCamera, choosePhotoFromLibrary }) => {
+const FloatingButton = ({ TakePhotoFromCamera, ChoosePhotoFromLibrary }) => {
   const [pop, setPop] = useState(false);
   const [icon_1] = useState(new Animated.Value(0));
   const [icon_2] = useState(new Animated.Value(0));
@@ -55,9 +55,20 @@ const FloatingButton = ({ takePhotoFromCamera, choosePhotoFromLibrary }) => {
     setBtnColor(Pink500);
     setBtnIcon("md-add");
   };
+
+  const choosePhotoFromLibrary = () => {
+    ChoosePhotoFromLibrary();
+    popOut();
+  };
+
+  const takePhotoFromCamera = () => {
+    TakePhotoFromCamera();
+    popOut();
+  };
+
   return (
     <>
-      <Animated.View className="absolute bottom-[30.5] right-[30]">
+      <Animated.View className="absolute bottom-[30] right-[30]">
         <TouchableOpacity
           className="bg-amber-500 w-[60px] h-[60px]  rounded-full justify-center items-center pb-1 pr-1"
           onPress={() => takePhotoFromCamera()}
@@ -66,7 +77,7 @@ const FloatingButton = ({ takePhotoFromCamera, choosePhotoFromLibrary }) => {
           <MaterialIcons name="add-a-photo" size={30} color="#fff" />
         </TouchableOpacity>
       </Animated.View>
-      <Animated.View className="absolute bottom-[30.5] right-[30]">
+      <Animated.View className="absolute bottom-[30] right-[30]">
         <TouchableOpacity
           className="bg-amber-500 w-[60px] h-[60px] rounded-full justify-center items-center"
           onPress={() => choosePhotoFromLibrary()}
@@ -75,7 +86,7 @@ const FloatingButton = ({ takePhotoFromCamera, choosePhotoFromLibrary }) => {
           <MaterialIcons name="add-photo-alternate" size={30} color="#fff" />
         </TouchableOpacity>
       </Animated.View>
-      <Animated.View className="absolute bottom-[30.5] right-[30]">
+      <Animated.View className="absolute bottom-[30] right-[30]">
         <TouchableOpacity
           className="bg-amber-500 w-[60px] h-[60px] rounded-full justify-center items-center"
           onPress={() => alert("Open nothing but looks good")}
