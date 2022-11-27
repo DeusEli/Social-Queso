@@ -4,7 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useNavigation } from "@react-navigation/native";
 import { HomeScreen, ProfileScreen, AddPostScreen } from "../src/screens";
-import { Pink400, Pink50 } from "../src/utils/Colors";
+import { Pink400, Pink50, Amber500 } from "../src/utils/Colors";
 import { FontAwesome } from "@expo/vector-icons";
 
 const Stack = createStackNavigator();
@@ -75,7 +75,7 @@ const AppStack = () => {
     <Tab.Navigator
       initialRouteName="Home"
       screenOptions={{
-        tabBarActiveTintColor: Pink400,
+        tabBarActiveTintColor: Amber500,
       }}
     >
       <Tab.Screen

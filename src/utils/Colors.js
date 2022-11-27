@@ -6,4 +6,6 @@ export const Pink50 = "#FDF2F8";
 export const Amber300 = "#FCD34D"; // login button background color
 export const Amber100 = "#FEF3C7"; // logout button text color
 export const Amber700 = "#B45309";
+export const Amber500 = "#F59E0B";
+export const Amber600 = "#D97706";
 export const Red500 = "#EF4444"; // logout button background color
