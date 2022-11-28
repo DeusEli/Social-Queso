@@ -24,7 +24,7 @@ const PostCard = ({ Props }) => {
             {Props.pfName} {Props.pfLastname}
           </Text>
           <Text className="text-xs ml-2 text-gray-500 italic font-bold">
-            {Props.timeAgo} mins ago
+            Posted on: {Props.timeAgo.toString()}
           </Text>
         </View>
       </View>

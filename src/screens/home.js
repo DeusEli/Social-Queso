@@ -1,6 +1,10 @@
-import React, { useContext, useState } from "react";
-import { View, Text } from "react-native";
+import React, { useEffect, useState } from "react";
+import { View } from "react-native";
 import PostCardList from "../components/postCardList";
+import firestore from "@react-native-firebase/firestore";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import { RefreshControl, TouchableOpacity } from "react-native-gesture-handler";
+import { Amber600 } from "../utils/Colors";
 
 const Posts = [
   {
@@ -57,9 +61,54 @@ const Posts = [
 ];
 
 const Home = () => {
+  const [posts, setPosts] = useState([]);
+
+  const fetchPosts = async () => {
+    try {
+      const list = [];
+      await firestore()
+        .collection("posts")
+        .get()
+        .then((querySnapshot) => {
+          //console.log("Total posts: ", querySnapshot.size);
+          querySnapshot.forEach((documentSnapshot) => {
+            const { user_id, post, postImg, postTime } =
+              documentSnapshot.data();
+            list.push({
+              id: documentSnapshot.id,
+              user_id,
+              pfPicture:
+                "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1600",
+              pfName: "Elí",
+              pfLastname: user_id,
+              timeAgo: postTime.toDate().toDateString(),
+              text: post,
+              image: postImg,
+              likes: 0,
+              comments: 0,
+            });
+          });
+        });
+      setPosts(list);
+      // if (loading) {
+      //   setLoading(false);
+      // }
+      console.log(list);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
+
   return (
     <View className="h-full w-full items-center justify-start bg-pink-50">
-      <PostCardList posts={Posts} />
+      <TouchableOpacity onPress={() => fetchPosts()}>
+        <Ionicons name="refresh" size={30} color={Amber600} />
+      </TouchableOpacity>
+      <PostCardList posts={posts} />
     </View>
   );
 };
