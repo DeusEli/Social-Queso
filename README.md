@@ -1,4 +1,4 @@
-# Social Queso
+# Social Queso 🧀
 This is a social network prototype called Social Queso. It was for a university project (Keep in mind that the Firebase instance doesn't exist anymore.)
 ## What can you do in Social Queso?
 - See a On Boarding element only the first time you open the app
